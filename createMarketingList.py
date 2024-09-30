@@ -21,41 +21,32 @@
 # Note: you can use the comments below to guide you through the logic of the code. You are not
 # required to follow it. ALSO NOT ALL STEPS HAVE BEEN COMMENTED. You may have additional steps.
 
-
 import csv
 
 # open the vendorlist file
+with open('VendorList.csv', mode='r') as infile:
 
+    # create a csv object from the file object
+    reader = csv.reader(infile)
+    next(reader)  # Skip the header row
 
-# create a csv object from the file object
+    # create an output file
+    with open('marketinglistFINAL.csv', mode='w', newline='') as outfile:
+        writer = csv.writer(outfile)
+        
+        # Write the header (optional, depending on if you need headers)
+        # writer.writerow(['ID', 'First Name', 'Last Name', 'Email', 'Phone'])
+        
+        # iterate through the csv object and write the rows to the new file
+        for row in reader:
+            # Extract relevant fields: id, first_name, last_name, email, phone
+            id = row[0]           # Assuming the first column is ID
+            first_name = row[1]    # Assuming the second column is First Name
+            last_name = row[2]     # Assuming the third column is Last Name
+            email = row[4]         # Assuming the fifth column is Email
+            phone = row[5]         # Assuming the sixth column is Phone
+            
+            # Write the row with required fields (excluding gender)
+            writer.writerow([id, first_name, last_name, email, phone])
 
-
-# create an output file
-
-
-
-
-
-# create an empty dictionary
-
-
-
-# iterate through the csv object
-
-
-
-
-    # add the key-value pair to the dictionary
-
-
-
-# print the dictionary after the loop is finished
-
-
-
-# iternate through the dictionary and write to the output file
-
-
-
-# close your output file
 
